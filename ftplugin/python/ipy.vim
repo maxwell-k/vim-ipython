@@ -81,7 +81,7 @@ au CursorHold *.*,vim-ipython :python3 if update_subchannel_msgs(): echo("vim-ip
 " XXX: broken - cursor hold update for insert mode moves the cursor one
 " character to the left of the last character (update_subchannel_msgs must be
 " doing this)
-"au CursorHoldI *.* :python if update_subchannel_msgs(): echo("vim-ipython shell updated (on idle)",'Operator')
+"au CursorHoldI *.* :python3 if update_subchannel_msgs(): echo("vim-ipython shell updated (on idle)",'Operator')
 
 " Same as above, but on regaining window focus (mostly for GUIs)
 au FocusGained *.*,vim-ipython :python3 if update_subchannel_msgs(): echo("vim-ipython shell updated (on input focus)",'Operator')
@@ -91,22 +91,22 @@ au FocusGained *.*,vim-ipython :python3 if update_subchannel_msgs(): echo("vim-i
 au BufEnter vim-ipython :python3 if update_subchannel_msgs(): echo("vim-ipython shell updated (on buffer enter)",'Operator')
 
 " Setup plugin mappings for the most common ways to interact with ipython.
-noremap  <Plug>(IPython-RunFile)            :python run_this_file()<CR>
-noremap  <Plug>(IPython-RunLine)            :python run_this_line()<CR>
-noremap  <Plug>(IPython-RunLines)           :python run_these_lines()<CR>
-noremap  <Plug>(IPython-OpenPyDoc)          :python get_doc_buffer()<CR>
-noremap  <Plug>(IPython-UpdateShell)        :python if update_subchannel_msgs(force=True): echo("vim-ipython shell updated",'Operator')<CR>
-noremap  <Plug>(IPython-ToggleReselect)     :python toggle_reselect()<CR>
-"noremap  <Plug>(IPython-StartDebugging)     :python send('%pdb')<CR>
-"noremap  <Plug>(IPython-BreakpointSet)      :python set_breakpoint()<CR>
-"noremap  <Plug>(IPython-BreakpointClear)    :python clear_breakpoint()<CR>
-"noremap  <Plug>(IPython-DebugThisFile)      :python run_this_file_pdb()<CR>
-"noremap  <Plug>(IPython-BreakpointClearAll) :python clear_all_breaks()<CR>
+noremap  <Plug>(IPython-RunFile)            :python3 run_this_file()<CR>
+noremap  <Plug>(IPython-RunLine)            :python3 run_this_line()<CR>
+noremap  <Plug>(IPython-RunLines)           :python3 run_these_lines()<CR>
+noremap  <Plug>(IPython-OpenPyDoc)          :python3 get_doc_buffer()<CR>
+noremap  <Plug>(IPython-UpdateShell)        :python3 if update_subchannel_msgs(force=True): echo("vim-ipython shell updated",'Operator')<CR>
+noremap  <Plug>(IPython-ToggleReselect)     :python3 toggle_reselect()<CR>
+"noremap  <Plug>(IPython-StartDebugging)     :python3 send('%pdb')<CR>
+"noremap  <Plug>(IPython-BreakpointSet)      :python3 set_breakpoint()<CR>
+"noremap  <Plug>(IPython-BreakpointClear)    :python3 clear_breakpoint()<CR>
+"noremap  <Plug>(IPython-DebugThisFile)      :python3 run_this_file_pdb()<CR>
+"noremap  <Plug>(IPython-BreakpointClearAll) :python3 clear_all_breaks()<CR>
 noremap  <Plug>(IPython-ToggleSendOnSave)   :call <SID>toggle_send_on_save()<CR>
-noremap  <Plug>(IPython-PlotClearCurrent)   :python run_command("plt.clf()")<CR>
-noremap  <Plug>(IPython-PlotCloseAll)       :python run_command("plt.close('all')")<CR>
-noremap  <Plug>(IPython-RunLineAsTopLevel)  :python dedent_run_this_line()<CR>
-xnoremap <Plug>(IPython-RunLinesAsTopLevel) :python dedent_run_these_lines()<CR>
+noremap  <Plug>(IPython-PlotClearCurrent)   :python3 run_command("plt.clf()")<CR>
+noremap  <Plug>(IPython-PlotCloseAll)       :python3 run_command("plt.close('all')")<CR>
+noremap  <Plug>(IPython-RunLineAsTopLevel)  :python3 dedent_run_this_line()<CR>
+xnoremap <Plug>(IPython-RunLinesAsTopLevel) :python3 dedent_run_these_lines()<CR>
 
 if g:ipy_perform_mappings != 0
     map  <buffer> <silent> <F5>           <Plug>(IPython-RunFile)
